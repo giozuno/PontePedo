@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Ponte Pedo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="continuar">Continuar</string>
+    <string name="menu_title_1">PONTE</string>
+    <string name="menu_title_2">PEDO</string>
+    <string name="menu_button_play">Jugar</string>
+    <string name="menu_button_games">Juegos</string>
+    <string name="title_activity_activity_play">ActivityPlay</string>
+    <string name="title_activity_activity_games">ActivityGames</string>
+    <string name="title_activity_activity_detail">ActivityDetail</string>
+    <string name="play_getCard">Toma una carta...</string>
+    <string name="null_card">null card</string>
+    <string name="games_title">Juegos</string>
+    <string name="detail_change_game">Cambiar Juego</string>
+    <string name="detail_dialog_message">¿Estas seguro que deseas borrar el juego y crear uno nuevo?</string>
+    <string name="detail_dialog_possitive_button">Continuar</string>
+    <string name="detail_dialog_negative_button">Cancelar</string>
+    <string name="title_activity_activity_change_game">ActivityChangeGame</string>
+    <string name="change_title">Nuevo Juego</string>
+    <string name="change_title_hint">Introduce el titulo del nuevo juego...</string>
+    <string name="change_description_hint">Introduce la descripción del nuevo juego...</string>
+    <string name="title_roulette">Gira la ruleta...</string>
+    <string name="button_roulette">Regresar</string>
+
+    <string name="game_A">Yo nunca nunca</string>
+    <string name="game_2">Animales</string>
+    <string name="game_3">Historia</string>
+    <string name="game_4">Cascada</string>
+    <string name="game_5">Palabra prohibida</string>
+    <string name="game_6">Preguntas</string>
+    <string name="game_7">Mi Pinga - Mi Pepa</string>
+    <string name="game_8">Dedo</string>
+    <string name="game_9">Discrepo</string>
+    <string name="game_10">Mesero</string>
+    <string name="game_J">Marcianos</string>
+    <string name="game_Q">Caricachupas</string>
+    <string name="game_K">El Abuelo</string>
+    <string name="game_JK">Ruleta de Castigos</string>
+
+    <string name="desc_A">Este juego consiste en una ronda en la que cada participante dira una verdad la cual comenzara con la frase "Yo nunca nunca...". Si alguien ha hecho dicha verdad debera tomar un trago.</string>
+    <string name="desc_2">En la primera ronda cada participante hara el sonido de un animal sin mostrar los dientes e indicando que animal es, despues los participantes se llamaran entre si primero haciendo su ruido y despues el del compañero al que le hablan (ejemplo "Pollo PIO llamando a pato CUAK). Si alguien muestra los dientes en algun momento, pierde el juego.</string>
+    <string name="desc_3">Este juego consiste en hacer una historia en la que cada jugador debe repetir la historia creada y agregarle una palabra más (ejemplo: Había --> Había una --> Había una vez). Si alguien se equivoca pierde.</string>
+    <string name="desc_4">Todos empiezan a tomar al mismo tiempo, pero solo la persona que saco la carta puede dejar de tomar cuando quiera, y solo cuando el se baje la persona de su derecha se podra bajar y asi sucesivamente hasta que todos dejen de tomar.</string>
+    <string name="desc_5">El jugador que obtuvo esta carta prohibe una palabra, si algun jugador la dice debera tomar un trago, la palabra cambiara hasta que vuelva a salir esta carta.</string>
+    <string name="desc_6">Este juego lo empezara el jugador que saco la carta, este le hara una pregunta al jugador que quiera, y el preguntado debera hacer otra pregunta a otro jugador diferente y asi sucesivamene. Si alguien tarda en hacer una pregunta o lo que contesta no es pregunta perdera el juego.</string>
+    <string name="desc_7">Primero se jugara un basta para elegir una letra, despues cada jugador debera decir un adjetivo que empieze con la letra SIN MOSTRAR LOS DIENTES y dependiendo si es hombre (Mi Pinga), o mujer (Mi Pepa) diran su frase: (letra A) Mi pipa es asombrosa, Mi pepa es amable.</string>
+    <string name="desc_8">El jugador que obtenga esta carta debe de poner su dedo en un lugar visible (por ejemplo la mesa), esto sera en el momento que el quiera y el ultimo que ponga su dedo donde el lo puso sera el perdedor.</string>
+    <string name="desc_9">El jugador que saca la carta debe de decir un verbo o una palabra cualquiera y el jugador de su derecha debe decir algo relacionado a esa palabra y asi sucesivamente, pero tu palabra solo debe de estar relacionada con la palabra anterior por ejemplo: Playa -- Arena -- Mar -- Sal -- Pimienta -- Comida (Pimienta no tiene relacion con arena ni mar, pero es valida por que si la tiene con sal), si algun jugador considera que una palabra no tiene relacion debera decir DISCREPO y si todos DISCREPAN el jugador perdera, si no todos discrepan el juego sigue.</string>
+    <string name="desc_10">El jugador girara una botella para elegir quien sera su mesero, el jugador que haya sido seleccionado debera ser su mesero hasta que esta carta vuelva a salir</string>
+    <string name="desc_J">Los jugadores se enumeraran empezando por quien saco la carta, y el mismo comenzara SIN MOSTRAR LOS DIENTES y CON LAS MANOS EN LA CABEZA llamando a sus compañeros por ejemplo: Marcianito 1 (ya que el empieza) llamando a Marcianito 3. Todos los participantes pueden hacer ruidos para hacer reir a los demas y quien muestre los dientes pierde.</string>
+    <string name="desc_Q">Es el clasico juego de caricaturas. Al ritmo de los aplausos cada jugador debe de mencionar un objeto que sea valido dentro del tema elejido (ejemplo: Caricaturas -- presenta -- nombres de -- TEMA A ELEGIR -- por ejemplo -- PRIMER OBJETO...). El primero en equivocarse pierde el juego.</string>
+    <string name="desc_K">Primero se deben de enumerar los concursantes del juego, y entre ellos se llamaran entre si usando la siguiente dinamica [ejemplo: Cuando el abuelo murio 4 copas de vino dejo -- (El numero 4 responde) ¿Y por que 4? -- (Vuelve a contestar el primero) ¿Entonces cuantas? -- 6 -- (Contesta el 6) ¿Y por que 6? ...] El juego sigue hasta que alguien se equivoque</string>
+    <string name="desc_JK">Presiona la carta para entrar a la Ruleta de Castigos</string>
+    <string name="title_activity_activity_roulette">ActivityRoulette</string>
+
+    <string name="reto1">Toma 1 Shot</string>
+    <string name="reto2">Verdad o Reto</string>
+    <string name="reto3">Regala 1 Shot</string>
+    <string name="reto4">Todos Toman</string>
+    <string name="reto5">Toma 2 Shots</string>
+    <string name="reto6">Verdad o Reto</string>
+    <string name="reto7">Regala 2 Shots</string>
+    <string name="reto8">Prenda o Baile</string>
+
+</resources>
