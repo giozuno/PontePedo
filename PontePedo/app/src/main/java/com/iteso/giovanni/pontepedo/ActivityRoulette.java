@@ -19,6 +19,8 @@ import java.util.Random;
 public class ActivityRoulette extends AppCompatActivity {
     String challenge;
     AnimationDrawable animation;
+    TextView tileRoulette;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,54 +28,58 @@ public class ActivityRoulette extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        final TextView tileRoulette = (TextView) findViewById(R.id.title_roulette);
         Button button = (Button) findViewById(R.id.buttonRoulette);
         final ImageButton roulette = (ImageButton) findViewById(R.id.roulette);
+        tileRoulette = (TextView) findViewById(R.id.title_roulette);
         roulette.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                int time = 300;
+                int time1 = 150, time2 = 200, timeF = 250;
                 animation = new AnimationDrawable();
-                fullRoulette(time);
+                fullRoulette(time1);
+                fullRoulette(time2);
                 Random rnd = new Random();
                 int numRnd = (int)(rnd.nextDouble() * 7);
                 switch (numRnd) {
                     case 0:
-                        roulette1(time);
+                        roulette1(timeF);
                         break;
                     case 1:
-                        roulette2(time);
+                        roulette2(timeF);
                         break;
                     case 2:
-                        roulette3(time);
+                        roulette3(timeF);
                         break;
                     case 3:
-                        roulette4(time);
+                        roulette4(timeF);
+                        break;
                     case 4:
-                        roulette5(time);
+                        roulette5(timeF);
                         break;
                     case 5:
-                        roulette6(time);
+                        roulette6(timeF);
                         break;
                     case 6:
-                        roulette7(time);
+                        roulette7(timeF);
                         break;
                     case 7:
-                        roulette8(time);
+                        roulette8(timeF);
                         break;
                 }
                 roulette.setImageDrawable(animation);
                 animation.start();
-                roulette.setOnClickListener(new View.OnClickListener() {
+                tileRoulette.postDelayed(new Runnable() {
                     @Override
-                    public void onClick(View v) {
+                    public void run() {
                         tileRoulette.setText(challenge);
                         MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.ding_ganador);
                         mp.start();
                     }
-                });
+                }, time1*8 + time2*8 + timeF*numRnd);
+                roulette.setClickable(false);
             }
+
         });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,4 +172,16 @@ public class ActivityRoulette extends AppCompatActivity {
         this.animation.addFrame(getDrawable(R.drawable.ruleta8), sec);
         challenge = getString(R.string.reto8);
     }
+
+//    public void challengeChoice(int time1, int time2, int timeFinal, int posFinal) {
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                tileRoulette.setText(challenge);
+//                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.ding_ganador);
+//                mp.start();
+//            }
+//        }, time1*8 + time2*8 + timeFinal*posFinal);
+//    }
 }
