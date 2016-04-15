@@ -13,6 +13,7 @@ public class DataBaseContract {
         public static final String TABLE_NAME = "GAMES";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_DESC = "description";
+        public static final String COLUMN_CHECKED = "checked";
     }
 
     public static abstract class CardGamesContract implements BaseColumns {

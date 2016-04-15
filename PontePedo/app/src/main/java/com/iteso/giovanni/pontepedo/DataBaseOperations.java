@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 /**
  * Created by giovanni on 13/04/2016.
  */
@@ -21,6 +23,7 @@ public class DataBaseOperations {
         ContentValues values = new ContentValues();
         values.put(DataBaseContract.GamesContract.COLUMN_NAME, name);
         values.put(DataBaseContract.GamesContract.COLUMN_DESC, desc);
+        values.put(DataBaseContract.GamesContract.COLUMN_CHECKED, 0);
 
         long newRowId = db.insert(
                 DataBaseContract.GamesContract.TABLE_NAME,
@@ -34,7 +37,8 @@ public class DataBaseOperations {
         String[] projection = {
                 DataBaseContract.GamesContract._ID,
                 DataBaseContract.GamesContract.COLUMN_NAME,
-                DataBaseContract.GamesContract.COLUMN_DESC
+                DataBaseContract.GamesContract.COLUMN_DESC,
+                DataBaseContract.GamesContract.COLUMN_CHECKED
         };
         String sortOrder =
                 DataBaseContract.GamesContract._ID + " ASC";
@@ -59,10 +63,36 @@ public class DataBaseOperations {
                     g.setId(c.getInt(0));
                     g.setName(c.getString(1));
                     g.setDescription(c.getString(2));
+                    if(c.getInt(3) == 1)
+                        g.setChecked(true);
+                    else
+                        g.setChecked(false);
                 }
             } while (c.moveToNext());
         }
         return g;
+    }
+
+    public ArrayList<Game> getGameList() {
+        Cursor c = getGamesCursor();
+        ArrayList<Game> gameList = new ArrayList<>();
+        if (c != null && c.moveToFirst()) {
+            Game game;
+            do {
+                int i = 1;
+                game = new Game();
+                game.setId(c.getInt(0));
+                game.setName(c.getString(1));
+                game.setDescription(c.getString(2));
+                if(c.getInt(3) == 1)
+                    game.setChecked(true);
+                else
+                    game.setChecked(false);
+                gameList.add(i, game);
+                i++;
+            } while (c.moveToNext());
+        }
+        return gameList;
     }
 
     public Cursor getCardsGameCursor() {

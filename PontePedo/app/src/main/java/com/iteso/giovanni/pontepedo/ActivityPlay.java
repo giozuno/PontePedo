@@ -11,13 +11,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
 public class ActivityPlay extends AppCompatActivity {
     Stack<String> stack = new Stack<>();
-    String carta[] = {"AsR", "2R", "3R", "4R", "5R", "6R", "7R", "8R", "9R", "10R", "JR", "QR", "KR", "Joker"};
+    String carta[] = {"AsR", "2R", "3R", "4R", "5R", "6R", "7R", "8R", "9R", "10R", "JR", "QR", "KR", "Joker", "Joker2"};
+    Game g = null;
     String act;
 
     @Override
@@ -46,9 +46,9 @@ public class ActivityPlay extends AppCompatActivity {
                     act = stack.peek();
                     stack.pop();
 
-                    if(act != "Joker") {
+                    if(act != "Joker" && act != "Joker2") {
                         CardGame cg = dbOperations.getCardGame(act);
-                        Game g = dbOperations.getGame(cg.getId());
+                        g = dbOperations.getGame(cg.getId());
                         card.setImageDrawable(getDrawable(cg.getDrawable()));
                         card.setContentDescription(act);
                         titleGame.setText(g.getName());
@@ -73,7 +73,7 @@ public class ActivityPlay extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Toca la carta", Toast.LENGTH_SHORT).show();
                 else {
                     Intent intent = new Intent(ActivityPlay.this, ActivityGameDetail.class);
-                    intent.putExtra("pos", Arrays.asList(carta).indexOf(act));
+                    intent.putExtra("pos", g.getId());
                     startActivity(intent);
                 }
             }
@@ -88,16 +88,16 @@ public class ActivityPlay extends AppCompatActivity {
     }
 
     public void fillStack() {
-        for(int i=0; i<14; i++){
+        for(int i=0; i<carta.length; i++){
             boolean flag = false;
             Random rnd = new Random();
-            int x = (int)(rnd.nextDouble() * 14);
+            int x = (int)(rnd.nextDouble() * carta.length);
             while (!flag){
                 if(!stack.contains(carta[x])){
                     stack.push(carta[x]);
                     flag = true;
                 }
-                else if (x == 13)
+                else if (x == carta.length-1)
                     x = 0;
                 else
                     x++;

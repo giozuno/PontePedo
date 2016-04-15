@@ -6,7 +6,7 @@
     <string name="menu_title_1">PONTE</string>
     <string name="menu_title_2">PEDO</string>
     <string name="menu_button_play">Jugar</string>
-    <string name="menu_button_games">Juegos</string>
+    <string name="menu_button_games">Lista de Juegos</string>
     <string name="title_activity_activity_play">ActivityPlay</string>
     <string name="title_activity_activity_games">ActivityGames</string>
     <string name="title_activity_activity_detail">ActivityDetail</string>
@@ -14,7 +14,7 @@
     <string name="null_card">null card</string>
     <string name="games_title">Juegos</string>
     <string name="detail_change_game">Cambiar Juego</string>
-    <string name="detail_dialog_message">¿Estas seguro que deseas borrar el juego y crear uno nuevo?</string>
+    <string name="detail_dialog_message">¿Estas seguro que deseas continuar con estos juegos?</string>
     <string name="detail_dialog_possitive_button">Continuar</string>
     <string name="detail_dialog_negative_button">Cancelar</string>
     <string name="title_activity_activity_change_game">ActivityChangeGame</string>
@@ -23,6 +23,8 @@
     <string name="change_description_hint">Introduce la descripción del nuevo juego...</string>
     <string name="title_roulette">Gira la ruleta...</string>
     <string name="button_roulette">Regresar</string>
+    <string name="edit_game_title">Editar lista de juegos</string>
+    <string name="confirm_button">Confirmar</string>
 
     <string name="game_A">Yo nunca nunca</string>
     <string name="game_2">Animales</string>
@@ -63,5 +65,6 @@
     <string name="reto6">Verdad o Reto</string>
     <string name="reto7">Regala 2 Shots</string>
     <string name="reto8">Prenda o Baile</string>
+    <string name="title_activity_activity_edit_game_list">ActivityEditGameList</string>
 
 </resources>

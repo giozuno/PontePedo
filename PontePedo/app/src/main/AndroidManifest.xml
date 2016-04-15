@@ -36,6 +36,10 @@
             android:name=".ActivityRoulette"
             android:label="@string/title_activity_activity_roulette" >
         </activity>
+        <activity
+            android:name=".ActivityEditGameList"
+            android:label="@string/title_activity_activity_edit_game_list" >
+        </activity>
     </application>
 
 </manifest>

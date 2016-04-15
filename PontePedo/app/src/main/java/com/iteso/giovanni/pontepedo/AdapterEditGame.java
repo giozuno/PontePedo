@@ -5,29 +5,29 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CursorAdapter;
-import android.widget.TextView;
 
 /**
- * Created by giovanni on 13/04/2016.
+ * Created by giovanni on 15/04/2016.
  */
-public class AdapterGame extends CursorAdapter {
-    public AdapterGame(Context context, Cursor c, boolean autoRequery) {
-        super(context, c, 0);
+public class AdapterEditGame extends CursorAdapter {
+    public AdapterEditGame(Context context, Cursor c, boolean autoRequery) {
+        super(context, c, autoRequery);
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.item_game_list, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.item_edit_game_list, parent, false);
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView gameNameTextView = (TextView) view.findViewById(R.id.item_game_name);
+        CheckBox gameNameCheckBox = (CheckBox) view.findViewById(R.id.item_edit_game_checkBox);
 
         String gameName = cursor.getString(1);
 
-        gameNameTextView.setText(gameName);
+        gameNameCheckBox.setText(gameName);
     }
 
 }

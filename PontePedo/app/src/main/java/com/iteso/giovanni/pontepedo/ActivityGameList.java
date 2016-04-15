@@ -21,6 +21,7 @@ public class ActivityGameList extends AppCompatActivity{
 
         ListView listGames = (ListView) findViewById(R.id.listGames);
         ImageButton createGame = (ImageButton) findViewById(R.id.create_new_game_button);
+        ImageButton editList = (ImageButton) findViewById(R.id.edit_list_game_button);
 
         AdapterGame adapterGame = new AdapterGame(this, dbOperations.getGamesCursor(), false);
         listGames.setAdapter(adapterGame);
@@ -36,6 +37,13 @@ public class ActivityGameList extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityGameList.this, ActivityCreateGame.class);
+                startActivity(intent);
+            }
+        });
+        editList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityGameList.this, ActivityEditGameList.class);
                 startActivity(intent);
             }
         });
