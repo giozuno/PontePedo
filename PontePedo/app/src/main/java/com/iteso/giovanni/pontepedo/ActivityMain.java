@@ -15,7 +15,7 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        DataBaseSource dataSource = new DataBaseSource(ActivityMain.this);
+        final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());
 
         final Button play = (Button) findViewById(R.id.menu_button_play);
         final Button games = (Button) findViewById(R.id.menu_button_games);
@@ -29,11 +29,10 @@ public class ActivityMain extends AppCompatActivity {
         games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gamesIntent = new Intent(ActivityMain.this, ActivityGames.class);
+                Intent gamesIntent = new Intent(ActivityMain.this, ActivityGameList.class);
                 startActivity(gamesIntent);
             }
         });
-
     }
 
     @Override

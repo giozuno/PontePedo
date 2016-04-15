@@ -5,15 +5,15 @@ package com.iteso.giovanni.pontepedo;
  */
 public class Game {
     private int id;
-    private String text;
+    private String name;
     private String description;
 
     public Game() {
     }
 
-    public Game(int id, String text, String description) {
+    public Game(int id, String name, String description) {
         this.id = id;
-        this.text = text;
+        this.name = name;
         this.description = description;
     }
 
@@ -25,12 +25,12 @@ public class Game {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

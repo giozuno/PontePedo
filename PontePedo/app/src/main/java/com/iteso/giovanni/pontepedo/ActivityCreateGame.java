@@ -1,5 +1,6 @@
 package com.iteso.giovanni.pontepedo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -9,25 +10,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ActivityChangeGame extends AppCompatActivity {
+public class ActivityCreateGame extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_game);
+        setContentView(R.layout.activity_create_game);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        EditText newTitle = (EditText) findViewById(R.id.change_text_title);
-        EditText newDescription = (EditText) findViewById(R.id.change_text_description);
+        final EditText newTitle = (EditText) findViewById(R.id.change_text_title);
+        final EditText newDescription = (EditText) findViewById(R.id.change_text_description);
         Button confirm = (Button) findViewById(R.id.change_button_confirm);
-        Bundle gameID = getIntent().getExtras();
-        final int posGame = gameID.getInt("value");
+        final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Deberia realizar cambio", Toast.LENGTH_SHORT).show();
+                if(!newTitle.getText().toString().isEmpty() && !newDescription.getText().toString().isEmpty()) {
+                    dbOperations.addGame(newTitle.getText().toString(), newDescription.getText().toString());
+                    Intent intent = new Intent(ActivityCreateGame.this, ActivityGameList.class);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Se debe de introducir un Titulo y una Descripcion " +
+                            "al nuevo juego para seguir", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -1,16 +1,12 @@
 package com.iteso.giovanni.pontepedo;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -28,7 +24,6 @@ public class ActivityRoulette extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Button button = (Button) findViewById(R.id.buttonRoulette);
         final ImageButton roulette = (ImageButton) findViewById(R.id.roulette);
         tileRoulette = (TextView) findViewById(R.id.title_roulette);
         roulette.setOnClickListener(new View.OnClickListener() {
@@ -81,35 +76,6 @@ public class ActivityRoulette extends AppCompatActivity {
             }
 
         });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityRoulette.this, ActivityPlay.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity_roulette, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -178,7 +144,7 @@ public class ActivityRoulette extends AppCompatActivity {
 //        handler.postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
-//                tileRoulette.setText(challenge);
+//                tileRoulette.setName(challenge);
 //                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.ding_ganador);
 //                mp.start();
 //            }

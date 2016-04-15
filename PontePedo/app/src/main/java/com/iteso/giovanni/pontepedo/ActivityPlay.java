@@ -133,7 +133,7 @@ public class ActivityPlay extends AppCompatActivity {
                 if(card.getContentDescription() == getString(R.string.null_card))
                     Toast.makeText(getApplicationContext(), "Toca la carta", Toast.LENGTH_SHORT).show();
                 else {
-                    Intent intent = new Intent(ActivityPlay.this, ActivityDetail.class);
+                    Intent intent = new Intent(ActivityPlay.this, ActivityGameDetail.class);
                     intent.putExtra("value", Arrays.asList(carta).indexOf(act));
                     startActivity(intent);
                 }

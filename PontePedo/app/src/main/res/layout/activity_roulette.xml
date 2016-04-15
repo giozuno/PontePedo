@@ -24,13 +24,4 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/button_roulette"
-        android:textSize="20dp"
-        android:id="@+id/buttonRoulette"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

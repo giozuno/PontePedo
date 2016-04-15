@@ -45,8 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "(null,\"Mesero\",\"El jugador girara una botella para elegir quien sera su mesero, el jugador que haya sido seleccionado debera ser su mesero hasta que esta carta vuelva a salir\")," +
             "(null,\"Marcianos\",\"Los jugadores se enumeraran empezando por quien saco la carta, y el mismo comenzara SIN MOSTRAR LOS DIENTES y CON LAS MANOS EN LA CABEZA llamando a sus compañeros por ejemplo: Marcianito 1 (ya que el empieza) llamando a Marcianito 3. Todos los participantes pueden hacer ruidos para hacer reir a los demas y quien muestre los dientes pierde.\")," +
             "(null,\"Caricachupas\",\"Es el clasico juego de caricaturas. Al ritmo de los aplausos cada jugador debe de mencionar un objeto que sea valido dentro del tema elejido (ejemplo: Caricaturas -- presenta -- nombres de -- TEMA A ELEGIR -- por ejemplo -- PRIMER OBJETO...). El primero en equivocarse pierde el juego.\")," +
-            "(null,\"El Abuelo\",\"Primero se deben de enumerar los concursantes del juego, y entre ellos se llamaran entre si usando la siguiente dinamica [ejemplo: Cuando el abuelo murio 4 copas de vino dejo -- (El numero 4 responde) ¿Y por que 4? -- (Vuelve a contestar el primero) ¿Entonces cuantas? -- 6 -- (Contesta el 6) ¿Y por que 6? ...] El juego sigue hasta que alguien se equivoque\")," +
-            "(null,\"Ruleta de Castigos\",\"Presiona la carta para entrar a la Ruleta de Castigos\")";
+            "(null,\"El Abuelo\",\"Primero se deben de enumerar los concursantes del juego, y entre ellos se llamaran entre si usando la siguiente dinamica [ejemplo: Cuando el abuelo murio 4 copas de vino dejo -- (El numero 4 responde) ¿Y por que 4? -- (Vuelve a contestar el primero) ¿Entonces cuantas? -- 6 -- (Contesta el 6) ¿Y por que 6? ...] El juego sigue hasta que alguien se equivoque\")";
 
     public static final String DEFAULT_INSERT_CARD_GAMES = "insert into CARD_GAMES values" +
             "(null,\"AsR\",\"1\")," +
@@ -61,8 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "(null,\"10R\",\"10\")," +
             "(null,\"JR\",\"11\")," +
             "(null,\"QR\",\"12\")," +
-            "(null,\"KR\",\"13\")," +
-            "(null,\"JOKER\",\"14\")";
+            "(null,\"KR\",\"13\")";
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

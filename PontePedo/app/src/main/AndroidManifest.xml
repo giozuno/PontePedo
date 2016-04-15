@@ -21,15 +21,15 @@
             android:label="@string/title_activity_activity_play" >
         </activity>
         <activity
-            android:name=".ActivityGames"
+            android:name=".ActivityGameList"
             android:label="@string/title_activity_activity_games" >
         </activity>
         <activity
-            android:name=".ActivityDetail"
+            android:name=".ActivityGameDetail"
             android:label="@string/title_activity_activity_detail" >
         </activity>
         <activity
-            android:name=".ActivityChangeGame"
+            android:name=".ActivityCreateGame"
             android:label="@string/title_activity_activity_change_game" >
         </activity>
         <activity
