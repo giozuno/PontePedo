@@ -22,7 +22,7 @@ public class ActivityGameList extends AppCompatActivity{
         ListView listGames = (ListView) findViewById(R.id.listGames);
         ImageButton createGame = (ImageButton) findViewById(R.id.create_new_game_button);
 
-        AdapterGame adapterGame = new AdapterGame(this, dbOperations.getGameListCursor(), false);
+        AdapterGame adapterGame = new AdapterGame(this, dbOperations.getGamesCursor(), false);
         listGames.setAdapter(adapterGame);
         listGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

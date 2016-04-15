@@ -26,7 +26,7 @@ public class ActivityGameDetail extends AppCompatActivity {
         Bundle gameID = getIntent().getExtras();
         final int posGame = gameID.getInt("pos");
 
-        Game chooseGame = dbOperations.getGame(posGame);
+        Game chooseGame = dbOperations.getGame(posGame + 1);
         title.setText(chooseGame.getName());
         description.setText(chooseGame.getDescription());
 

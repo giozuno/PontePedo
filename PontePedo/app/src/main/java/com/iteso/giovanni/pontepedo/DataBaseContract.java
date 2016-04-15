@@ -18,6 +18,7 @@ public class DataBaseContract {
     public static abstract class CardGamesContract implements BaseColumns {
         public static final String TABLE_NAME = "CARD_GAMES";
         public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_DRAWABLE = "drawable";
         public static final String COLUMN_IDGAME = "idGame";
     }
 }

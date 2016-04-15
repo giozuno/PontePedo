@@ -22,6 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + DataBaseContract.CardGamesContract.TABLE_NAME + "(" +
                     DataBaseContract.CardGamesContract._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     DataBaseContract.CardGamesContract.COLUMN_NAME + " TEXT NOT NULL," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE + " INTEGER," +
                     DataBaseContract.CardGamesContract.COLUMN_IDGAME + " INTEGER NOT NULL," +
                     "FOREIGN KEY("+ DataBaseContract.CardGamesContract.COLUMN_IDGAME +") REFERENCES " +
                     DataBaseContract.CardGamesContract.TABLE_NAME + "("+ DataBaseContract.GamesContract._ID+"))";
@@ -48,19 +49,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "(null,\"El Abuelo\",\"Primero se deben de enumerar los concursantes del juego, y entre ellos se llamaran entre si usando la siguiente dinamica [ejemplo: Cuando el abuelo murio 4 copas de vino dejo -- (El numero 4 responde) ¿Y por que 4? -- (Vuelve a contestar el primero) ¿Entonces cuantas? -- 6 -- (Contesta el 6) ¿Y por que 6? ...] El juego sigue hasta que alguien se equivoque\")";
 
     public static final String DEFAULT_INSERT_CARD_GAMES = "insert into CARD_GAMES values" +
-            "(null,\"AsR\",\"1\")," +
-            "(null,\"2R\",\"2\")," +
-            "(null,\"3R\",\"3\")," +
-            "(null,\"4R\",\"4\")," +
-            "(null,\"5R\",\"5\")," +
-            "(null,\"6R\",\"6\")," +
-            "(null,\"7R\",\"7\")," +
-            "(null,\"8R\",\"8\")," +
-            "(null,\"9R\",\"9\")," +
-            "(null,\"10R\",\"10\")," +
-            "(null,\"JR\",\"11\")," +
-            "(null,\"QR\",\"12\")," +
-            "(null,\"KR\",\"13\")";
+            "(null,\"AsR\"," + R.drawable.card_a + ",\"1\")," +
+            "(null,\"2R\"," + R.drawable.card_2 + ",\"2\")," +
+            "(null,\"3R\"," + R.drawable.card_3 + ",\"3\")," +
+            "(null,\"4R\"," + R.drawable.card_4 + ",\"4\")," +
+            "(null,\"5R\"," + R.drawable.card_5 + ",\"5\")," +
+            "(null,\"6R\"," + R.drawable.card_6 + ",\"6\")," +
+            "(null,\"7R\"," + R.drawable.card_7 + ",\"7\")," +
+            "(null,\"8R\"," + R.drawable.card_8 + ",\"8\")," +
+            "(null,\"9R\"," + R.drawable.card_9 + ",\"9\")," +
+            "(null,\"10R\"," + R.drawable.card_10 + ",\"10\")," +
+            "(null,\"JR\"," + R.drawable.card_j + ",\"11\")," +
+            "(null,\"QR\"," + R.drawable.card_q + ",\"12\")," +
+            "(null,\"KR\"," + R.drawable.card_k + ",\"13\")";
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
