@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 public class ActivityGameList extends AppCompatActivity{
-
+    boolean editList = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class ActivityGameList extends AppCompatActivity{
 
         final ListView listGames = (ListView) findViewById(R.id.listGames);
         ImageButton createGame = (ImageButton) findViewById(R.id.create_new_game_button);
-        ImageButton editList = (ImageButton) findViewById(R.id.edit_list_game_button);
+//        ImageButton editList = (ImageButton) findViewById(R.id.edit_list_game_button);
         Bundle extras = getIntent().getExtras();
         final boolean edit = extras.getBoolean("edit");
         final int gameOld = extras.getInt("gameOld");
@@ -30,6 +30,7 @@ public class ActivityGameList extends AppCompatActivity{
         AdapterGame adapterGame = null;
         if(edit) {
             adapterGame = new AdapterGame(this, dbOperations.getGamesNotPlayingCursor(), false);
+            editList = true;
         }
         else
             adapterGame = new AdapterGame(this, dbOperations.getGamesPlayingCursor(), false);
@@ -55,18 +56,22 @@ public class ActivityGameList extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        editList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityGameList.this, ActivityEditGameList.class);
-                startActivity(intent);
-            }
-        });
+//        editList.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ActivityGameList.this, ActivityEditGameList.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ActivityGameList.this, ActivityMain.class);
-        startActivity(intent);
+        if(editList)
+            super.onBackPressed();
+        else {
+            Intent intent = new Intent(ActivityGameList.this, ActivityMain.class);
+            startActivity(intent);
+        }
     }
 }
