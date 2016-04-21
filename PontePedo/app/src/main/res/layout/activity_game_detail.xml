@@ -15,14 +15,33 @@
         android:textColor="@color/black"
         android:gravity="bottom|center" />
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/detail_game_description"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/detail_game_title"/>
+        android:layout_height="wrap_content"
+        android:text="@string/detail_change_game"
+        android:id="@+id/detail_game_edit"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_scrollView"
+        android:layout_below="@+id/detail_game_title"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/detail_game_edit">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/detail_game_description"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/detail_game_title"/>
+
+    </ScrollView>
 
 </RelativeLayout>

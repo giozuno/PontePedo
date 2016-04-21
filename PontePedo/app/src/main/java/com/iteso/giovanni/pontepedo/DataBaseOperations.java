@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
-
 /**
  * Created by giovanni on 13/04/2016.
  */
@@ -67,32 +65,31 @@ public class DataBaseOperations {
                         g.setChecked(true);
                     else
                         g.setChecked(false);
+                    break;
                 }
             } while (c.moveToNext());
         }
         return g;
     }
 
-    public ArrayList<Game> getGameList() {
+    public Game getGame(String name) {
         Cursor c = getGamesCursor();
-        ArrayList<Game> gameList = new ArrayList<>();
+        Game g = new Game();
         if (c != null && c.moveToFirst()) {
-            Game game;
             do {
-                int i = 1;
-                game = new Game();
-                game.setId(c.getInt(0));
-                game.setName(c.getString(1));
-                game.setDescription(c.getString(2));
-                if(c.getInt(3) == 1)
-                    game.setChecked(true);
-                else
-                    game.setChecked(false);
-                gameList.add(i, game);
-                i++;
+                if(c.getString(1) == name) {
+                    g.setId(c.getInt(0));
+                    g.setName(c.getString(1));
+                    g.setDescription(c.getString(2));
+                    if(c.getInt(3) == 1)
+                        g.setChecked(true);
+                    else
+                        g.setChecked(false);
+                    break;
+                }
             } while (c.moveToNext());
         }
-        return gameList;
+        return g;
     }
 
     public Cursor getCardsGameCursor() {
@@ -114,10 +111,11 @@ public class DataBaseOperations {
                 null,
                 sortOrder
         );
+
         return c;
     }
 
-    public CardGame getCardGame(String cardNum) {
+    public CardGame getCardNumOfGame(String cardNum) {
         Cursor c = getCardsGameCursor();
         CardGame cg = new CardGame();
         if (c != null && c.moveToFirst()) {
@@ -131,5 +129,88 @@ public class DataBaseOperations {
             } while (c.moveToNext());
         }
         return cg;
+    }
+
+    public Cursor getGamesPlayingCursor() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                DataBaseContract.GamesContract._ID,
+                DataBaseContract.GamesContract.COLUMN_NAME,
+                DataBaseContract.GamesContract.COLUMN_DESC,
+                DataBaseContract.GamesContract.COLUMN_CHECKED
+        };
+        String selection =
+                DataBaseContract.GamesContract.COLUMN_CHECKED + "=?";
+        String args[] =
+                {"1"};
+        String sortOrder =
+                DataBaseContract.GamesContract._ID + " ASC";
+        Cursor c = db.query(
+                DataBaseContract.GamesContract.TABLE_NAME,
+                projection,
+                selection,
+                args,
+                null,
+                null,
+                sortOrder
+        );
+        return c;
+    }
+
+    public Cursor getGamesNotPlayingCursor() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                DataBaseContract.GamesContract._ID,
+                DataBaseContract.GamesContract.COLUMN_NAME,
+                DataBaseContract.GamesContract.COLUMN_DESC,
+                DataBaseContract.GamesContract.COLUMN_CHECKED
+        };
+        String selection =
+                DataBaseContract.GamesContract.COLUMN_CHECKED + "=?";
+        String args[] =
+                {"0"};
+        String sortOrder =
+                DataBaseContract.GamesContract._ID + " ASC";
+        Cursor c = db.query(
+                DataBaseContract.GamesContract.TABLE_NAME,
+                projection,
+                selection,
+                args,
+                null,
+                null,
+                sortOrder
+        );
+        return c;
+    }
+
+    public void changeGame(int idOld, int idNew) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // UPDATE TABLE CARD GAMES SWAP
+        ContentValues valuesCG = new ContentValues();
+        valuesCG.put(DataBaseContract.CardGamesContract.COLUMN_IDGAME, idNew);
+        String argsCG[] = {idOld + ""};
+        db.update(DataBaseContract.CardGamesContract.TABLE_NAME,
+                valuesCG,
+                DataBaseContract.CardGamesContract.COLUMN_IDGAME + "=?",
+                argsCG);
+
+        // UPDATE TABLE GAMES - NEW GAME
+        ContentValues valuesNew = new ContentValues();
+        valuesNew.put(DataBaseContract.GamesContract.COLUMN_CHECKED, 1);
+        String argsNew[] = {idNew + ""};
+        db.update(DataBaseContract.GamesContract.TABLE_NAME,
+                valuesNew,
+                DataBaseContract.GamesContract._ID + "=?",
+                argsNew);
+
+        // UPDATE TABLE GAMES - OLD GAME
+        ContentValues valuesOld = new ContentValues();
+        valuesOld.put(DataBaseContract.GamesContract.COLUMN_CHECKED, 0);
+        String argsOld[] = {idOld + ""};
+        db.update(DataBaseContract.GamesContract.TABLE_NAME,
+                valuesOld,
+                DataBaseContract.GamesContract._ID + "=?",
+                argsOld);
     }
 }

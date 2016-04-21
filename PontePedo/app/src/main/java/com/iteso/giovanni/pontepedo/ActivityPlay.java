@@ -47,8 +47,8 @@ public class ActivityPlay extends AppCompatActivity {
                     stack.pop();
 
                     if(act != "Joker" && act != "Joker2") {
-                        CardGame cg = dbOperations.getCardGame(act);
-                        g = dbOperations.getGame(cg.getId());
+                        CardGame cg = dbOperations.getCardNumOfGame(act);
+                        g = dbOperations.getGame(cg.getIdGame());
                         card.setImageDrawable(getDrawable(cg.getDrawable()));
                         card.setContentDescription(act);
                         titleGame.setText(g.getName());

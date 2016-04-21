@@ -1,6 +1,7 @@
 package com.iteso.giovanni.pontepedo;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,17 +20,31 @@ public class ActivityGameList extends AppCompatActivity{
 
         final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());
 
-        ListView listGames = (ListView) findViewById(R.id.listGames);
+        final ListView listGames = (ListView) findViewById(R.id.listGames);
         ImageButton createGame = (ImageButton) findViewById(R.id.create_new_game_button);
         ImageButton editList = (ImageButton) findViewById(R.id.edit_list_game_button);
+        Bundle extras = getIntent().getExtras();
+        final boolean edit = extras.getBoolean("edit");
+        final int gameOld = extras.getInt("gameOld");
 
-        AdapterGame adapterGame = new AdapterGame(this, dbOperations.getGamesCursor(), false);
+        AdapterGame adapterGame = null;
+        if(edit) {
+            adapterGame = new AdapterGame(this, dbOperations.getGamesNotPlayingCursor(), false);
+        }
+        else
+            adapterGame = new AdapterGame(this, dbOperations.getGamesPlayingCursor(), false);
+
         listGames.setAdapter(adapterGame);
         listGames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ActivityGameList.this, ActivityGameDetail.class);
-                intent.putExtra("pos", position);
+                Cursor c = (Cursor) listGames.getItemAtPosition(position);
+                intent.putExtra("pos", c.getInt(0));
+                if(edit)
+                    intent.putExtra("gameOld", gameOld);
+                intent.putExtra("edit", true);
+                intent.putExtra("change", edit);
                 startActivity(intent);
             }
         });
@@ -47,5 +62,11 @@ public class ActivityGameList extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ActivityGameList.this, ActivityMain.class);
+        startActivity(intent);
     }
 }
