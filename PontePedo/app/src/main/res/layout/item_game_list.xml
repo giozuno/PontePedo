@@ -11,5 +11,6 @@
         android:textStyle="italic"
         android:textColor="@color/black"
         android:id="@+id/item_game_name"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:longClickable="true"/>
 </LinearLayout>

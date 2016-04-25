@@ -17,6 +17,8 @@
     <string name="detail_dialog_message">¿Estas seguro que deseas continuar con estos juegos?</string>
     <string name="detail_dialog_possitive_button">Continuar</string>
     <string name="detail_dialog_negative_button">Cancelar</string>
+    <string name="dialog_yes_button">Si</string>
+    <string name="dialog_no_button">No</string>
     <string name="title_activity_activity_change_game">ActivityChangeGame</string>
     <string name="change_title">Nuevo Juego</string>
     <string name="change_title_hint">Introduce el titulo del nuevo juego...</string>
@@ -66,5 +68,19 @@
     <string name="reto7">Regala 2 Shots</string>
     <string name="reto8">Prenda o Baile</string>
     <string name="title_activity_activity_edit_game_list">ActivityEditGameList</string>
+    <string name="select_game_replace_deleted">Elige un juego para remplazar al seleccionado</string>
+    <string name="options_dialog_seeGame">Ver Juego</string>
+    <string name="options_dialog_deleteGame">Eliminar</string>
+    <string name="options_dialog_changeGame">Cambiar Juego</string>
+    <string name="intent_edit">edit</string>
+    <string name="intent_gameOld">gameOld</string>
+    <string name="intent_gameNew">gameNew</string>
+    <string name="intent_delete">delete</string>
+    <string name="intent_pos">pos</string>
+    <string name="intent_change">change</string>
+    <string name="create_game_message_error_empty">Se debe de introducir un Titulo y una Descripcion al nuevo juego para seguir</string>
+    <string name="create_game_message_instructions">Crea un nuevo juego para sustituir al seleccionado</string>
+    <string name="game_detail_chooseGame">Elegir Juego</string>
+    <string name="intent_create">create</string>
 
 </resources>

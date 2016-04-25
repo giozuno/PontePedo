@@ -77,7 +77,7 @@ public class DataBaseOperations {
         Game g = new Game();
         if (c != null && c.moveToFirst()) {
             do {
-                if(c.getString(1) == name) {
+                if(c.getString(1).equals(name)) {
                     g.setId(c.getInt(0));
                     g.setName(c.getString(1));
                     g.setDescription(c.getString(2));
@@ -183,7 +183,7 @@ public class DataBaseOperations {
         return c;
     }
 
-    public void changeGame(int idOld, int idNew) {
+    public void changeCardGame(int idOld, int idNew) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // UPDATE TABLE CARD GAMES SWAP
@@ -212,5 +212,13 @@ public class DataBaseOperations {
                 valuesOld,
                 DataBaseContract.GamesContract._ID + "=?",
                 argsOld);
+    }
+
+    public void deleteGame(int id) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String args[] = {id + ""};
+        db.delete(DataBaseContract.GamesContract.TABLE_NAME,
+                DataBaseContract.GamesContract._ID + "=?",
+                args);
     }
 }

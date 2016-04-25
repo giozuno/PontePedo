@@ -22,35 +22,67 @@ public class ActivityGameDetail extends AppCompatActivity {
         Button edit = (Button) findViewById(R.id.detail_game_edit);
 
         final Bundle gameID = getIntent().getExtras();
-        final int posGame = gameID.getInt("pos");
-        final boolean editEnable = gameID.getBoolean("edit");
-        final boolean changeEnable = gameID.getBoolean("change");
+        final int posGame = gameID.getInt(getString(R.string.intent_pos));
+        final boolean editEnable = gameID.getBoolean(getString(R.string.intent_edit));
+        final boolean changeEnable = gameID.getBoolean(getString(R.string.intent_change));
+        final boolean createEnable = gameID.getBoolean(getString(R.string.intent_create));
 
         if(changeEnable)
-            edit.setText("Elegir Juego");
-        if(!editEnable) {
+            edit.setText(R.string.game_detail_chooseGame);
+        if(!editEnable && !changeEnable) {
             edit.setPressed(true);
             edit.setClickable(false);
+        }
+        else if(createEnable) {
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int gameNew = gameID.getInt(getString(R.string.intent_gameNew));
+                    dbOperations.changeCardGame(posGame, gameNew);
+                    Intent intent = new Intent(ActivityGameDetail.this, ActivityGameList.class);
+                    intent.putExtra(getString(R.string.intent_edit), false);
+                    intent.putExtra(getString(R.string.intent_gameOld), -1);
+                    intent.putExtra(getString(R.string.intent_delete), false);
+                    startActivity(intent);
+                }
+            });
         }
         else if(editEnable && changeEnable)
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int gameOld = gameID.getInt("gameOld");
-                    dbOperations.changeGame(gameOld, posGame);
+                    int gameOld = gameID.getInt(getString(R.string.intent_gameOld));
+                    dbOperations.changeCardGame(gameOld, posGame);
                     Intent intent = new Intent(ActivityGameDetail.this, ActivityGameList.class);
-                    intent.putExtra("edit", false);
-                    intent.putExtra("gameOld", -1);
+                    intent.putExtra(getString(R.string.intent_edit), false);
+                    intent.putExtra(getString(R.string.intent_gameOld), -1);
+                    intent.putExtra(getString(R.string.intent_delete), false);
                     startActivity(intent);
                 }
             });
+        else if (!editEnable && changeEnable) {
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int gameOld = gameID.getInt(getString(R.string.intent_gameOld));
+                    dbOperations.changeCardGame(gameOld, posGame);
+                    dbOperations.deleteGame(gameOld);
+                    Intent intent = new Intent(ActivityGameDetail.this, ActivityGameList.class);
+                    intent.putExtra(getString(R.string.intent_edit), false);
+                    intent.putExtra(getString(R.string.intent_gameOld), -1);
+                    intent.putExtra(getString(R.string.intent_delete), false);
+                    startActivity(intent);
+                }
+            });
+        }
         else{
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(ActivityGameDetail.this, ActivityGameList.class);
-                    intent.putExtra("edit", true);
-                    intent.putExtra("gameOld", posGame);
+                    intent.putExtra(getString(R.string.intent_edit), true);
+                    intent.putExtra(getString(R.string.intent_gameOld), posGame);
+                    intent.putExtra(getString(R.string.intent_delete), false);
                     startActivity(intent);
                 }
             });
@@ -58,9 +90,5 @@ public class ActivityGameDetail extends AppCompatActivity {
         Game chooseGame = dbOperations.getGame(posGame);
         title.setText(chooseGame.getName());
         description.setText(chooseGame.getDescription());
-
-        // PRUEBA PARA LISTA DE EDIT GAME
-//        title.setText(posGame);
-//        description.setText(posGame);
     }
 }
