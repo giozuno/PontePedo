@@ -2,6 +2,7 @@ package com.iteso.giovanni.pontepedo;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,12 +20,14 @@ public class ActivityPlay extends AppCompatActivity {
     String carta[] = {"AsR", "2R", "3R", "4R", "5R", "6R", "7R", "8R", "9R", "10R", "JR", "QR", "KR", "Joker", "Joker2"};
     Game g = null;
     String act;
+    AnimationDrawable animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.hide();
         final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());
 
@@ -40,27 +43,35 @@ public class ActivityPlay extends AppCompatActivity {
                 button.setVisibility(View.INVISIBLE);
                 if (card.getContentDescription() == getString(R.string.null_card)) {
                     if (stack.isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "Se ha barajeado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Nuevas Cartas!", Toast.LENGTH_SHORT).show();
                         fillStack();
                     }
                     act = stack.peek();
                     stack.pop();
+                    int time = 25;
 
-                    if(act != "Joker" && act != "Joker2") {
+                    if(!act.equals("Joker") && !act.equals("Joker2")) {
                         CardGame cg = dbOperations.getCardNumOfGame(act);
                         g = dbOperations.getGame(cg.getIdGame());
-                        card.setImageDrawable(getDrawable(cg.getDrawable()));
+//                        card.setImageDrawable(getDrawable(cg.getDrawable()));
+                        cardAnimation(time, cg, false);
+                        card.setImageDrawable(animation);
+                        animation.start();
                         card.setContentDescription(act);
                         titleGame.setText(g.getName());
                     }
                     else {
-                        card.setImageDrawable(getDrawable(R.drawable.card_joker));
+//                        card.setImageDrawable(getDrawable(R.drawable.card_joker));
+                        cardAnimation(time, null, true);
+                        card.setImageDrawable(animation);
+                        animation.start();
                         card.setContentDescription("carta Joker");
                         titleGame.setText(R.string.game_JK);
                         button.setVisibility(View.VISIBLE);
                     }
+
                 } else {
-                    card.setImageDrawable(getDrawable(R.drawable.card_back));
+                    card.setImageDrawable(getDrawable(R.drawable.card_back0));
                     card.setContentDescription(getString(R.string.null_card));
                     titleGame.setText(R.string.play_getCard);
                 }
@@ -73,8 +84,13 @@ public class ActivityPlay extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Toca la carta", Toast.LENGTH_SHORT).show();
                 else {
                     Intent intent = new Intent(ActivityPlay.this, ActivityGameDetail.class);
-                    intent.putExtra("pos", g.getId());
-                    startActivity(intent);
+                    if(!act.equals("Joker") && !act.equals("Joker2")) {
+                        intent.putExtra("pos", g.getId());
+                        intent.putExtra("onlyInfo", true);
+                        startActivity(intent);
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), "Presiona el boton para ir a la ruleta", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -87,7 +103,7 @@ public class ActivityPlay extends AppCompatActivity {
         });
     }
 
-    public void fillStack() {
+    private void fillStack() {
         for(int i=0; i<carta.length; i++){
             boolean flag = false;
             Random rnd = new Random();
@@ -103,5 +119,25 @@ public class ActivityPlay extends AppCompatActivity {
                     x++;
             }
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void cardAnimation(int sec, CardGame cg, boolean isJoker) {
+        this.animation = new AnimationDrawable();
+        this.animation.setOneShot(true);
+        CardGame cardGame = new CardGame(false, true);
+        int drawablesBack[] = cardGame.getDrawables();
+        // Agregar frames de cardBack
+        for(int i=0; i<=8; i++)
+            this.animation.addFrame(getDrawable(drawablesBack[i]), sec);
+        this.animation.addFrame(getDrawable(R.drawable.card_back9), sec);
+        // Agregar frames de cardFront
+        if(!isJoker)
+            cardGame = cg;
+        else
+            cardGame = new CardGame(true, false);
+        int drawables[] = cardGame.getDrawables();
+        for(int i = 8; i>=0; i--)
+            this.animation.addFrame(getDrawable(drawables[i]), sec);
     }
 }

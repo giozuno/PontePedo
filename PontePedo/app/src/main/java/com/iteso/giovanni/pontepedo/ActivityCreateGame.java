@@ -11,23 +11,28 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class ActivityCreateGame extends AppCompatActivity {
+    int idNewGame;
+    DataBaseOperations dbOperations;
+    EditText newTitle, newDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.hide();
 
-        final EditText newTitle = (EditText) findViewById(R.id.change_text_title);
-        final EditText newDescription = (EditText) findViewById(R.id.change_text_description);
+        newTitle = (EditText) findViewById(R.id.change_text_title);
+        newDescription = (EditText) findViewById(R.id.change_text_description);
         Button confirm = (Button) findViewById(R.id.change_button_confirm);
-        final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());
+
+        dbOperations = new DataBaseOperations(getApplicationContext());
+
         Bundle extras = getIntent().getExtras();
         final Boolean deleteEnable = extras.getBoolean(getString(R.string.intent_delete));
-        final Boolean editEnable = extras.getBoolean(getString(R.string.intent_edit));
+        final Boolean editPlayingEnable = extras.getBoolean(getString(R.string.intent_edit_playing));
         final Boolean changeEnable = extras.getBoolean(getString(R.string.intent_change));
-        
         final int gameOld = extras.getInt(getString(R.string.intent_gameOld), -1);
 
         if(deleteEnable || changeEnable)
@@ -37,51 +42,57 @@ public class ActivityCreateGame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!newTitle.getText().toString().isEmpty() && !newDescription.getText().toString().isEmpty()) {
-                    dbOperations.addGame(newTitle.getText().toString(), newDescription.getText().toString());
-                    final int idNewGame = dbOperations.getGame(newTitle.getText().toString()).getId();
-                    if(!changeEnable && !editEnable) {
+                    if(!changeEnable && !deleteEnable) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCreateGame.this);
                         builder.setMessage("¿Deseas agregar este juego a tu lista de juegos actuales?").
                                 setPositiveButton(R.string.dialog_yes_button, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(ActivityCreateGame.this, ActivityGameList.class);
-                                        intent.putExtra(getString(R.string.intent_gameNew), idNewGame);
-                                        intent.putExtra(getString(R.string.intent_create), true);
-                                        startActivity(intent);
+                                        addGame();
+                                        makeIntentToList(-1, idNewGame, false, true, true, false);
                                     }
                                 }).
                                 setNegativeButton(R.string.dialog_no_button, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(ActivityCreateGame.this, ActivityGameList.class);
-                                        // Mostrar lista de no jugados
-                                        startActivity(intent);
+                                        addGame();
+                                        makeIntentToList(-1, -1, false, false, false, true);
                                     }
                                 });
                         AlertDialog dialog = builder.create();
                         dialog.show();
                     }
-                    if(changeEnable) {
+                    else if(changeEnable) {
+                        addGame();
                         dbOperations.changeCardGame(gameOld, idNewGame);
-                        Intent intent = new Intent(ActivityCreateGame.this, ActivityGameList.class);
-                        intent.putExtra(getString(R.string.intent_edit), editEnable);
-                        intent.putExtra(getString(R.string.intent_gameOld), gameOld);
-                        startActivity(intent);
+                        makeIntentToList(gameOld, -1, editPlayingEnable, false, false, false);
                     }
                     else if(deleteEnable) {
+                        addGame();
                         dbOperations.changeCardGame(gameOld, idNewGame);
                         dbOperations.deleteGame(gameOld);
-                        Intent intent = new Intent(ActivityCreateGame.this, ActivityGameList.class);
-                        intent.putExtra(getString(R.string.intent_edit), editEnable);
-                        intent.putExtra(getString(R.string.intent_gameOld), gameOld);
-                        startActivity(intent);
+                        makeIntentToList(-1, -1, false, false, false, false);
                     }
                 }
                 else
                     Toast.makeText(getApplicationContext(), R.string.create_game_message_error_empty, Toast.LENGTH_LONG).show();
             }
         });
+    }
 
+    private void addGame() {
+        dbOperations.addGame(newTitle.getText().toString(), newDescription.getText().toString());
+        this.idNewGame = dbOperations.getGame(newTitle.getText().toString()).getId();
+    }
+    
+    private void makeIntentToList(int gameOld, int gameNew, boolean editPlaying, boolean editNotPlaying, boolean create, boolean viewNotPlaying) {
+        Intent intent = new Intent(ActivityCreateGame.this, ActivityGameList.class);
+        intent.putExtra(getString(R.string.intent_gameOld), gameOld);
+        intent.putExtra(getString(R.string.intent_gameNew), gameNew);
+        intent.putExtra(getString(R.string.intent_edit_playing), editPlaying);
+        intent.putExtra(getString(R.string.intent_edit_notPlaying), editNotPlaying);
+        intent.putExtra(getString(R.string.intent_create), create);
+        intent.putExtra(getString(R.string.intent_view_NotPlaying), viewNotPlaying);
+        startActivity(intent);
     }
 }

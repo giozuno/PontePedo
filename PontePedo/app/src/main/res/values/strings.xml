@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ponte Pedo</string>
+    <string name="app_name">Game On</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="continuar">Continuar</string>
@@ -72,7 +72,7 @@
     <string name="options_dialog_seeGame">Ver Juego</string>
     <string name="options_dialog_deleteGame">Eliminar</string>
     <string name="options_dialog_changeGame">Cambiar Juego</string>
-    <string name="intent_edit">edit</string>
+    <string name="intent_edit_playing">editPlaying</string>
     <string name="intent_gameOld">gameOld</string>
     <string name="intent_gameNew">gameNew</string>
     <string name="intent_delete">delete</string>
@@ -81,6 +81,13 @@
     <string name="create_game_message_error_empty">Se debe de introducir un Titulo y una Descripcion al nuevo juego para seguir</string>
     <string name="create_game_message_instructions">Crea un nuevo juego para sustituir al seleccionado</string>
     <string name="game_detail_chooseGame">Elegir Juego</string>
+    <string name="intent_edit_notPlaying">editNotPlaying</string>
+    <string name="intent_playing">playing</string>
+    <string name="options_spinner_selectedGames">Juegos Seleccionados</string>
+    <string name="options_spinner_notSelectedGames">Juegos No Seleccionados</string>
+    <string name="select_game_to_replace">Elige el juego a remplazar</string>
     <string name="intent_create">create</string>
+    <string name="intent_view_NotPlaying">viewNotPlaying</string>
+    <string name="intent_onlyInfo">onlyInfo</string>
 
 </resources>

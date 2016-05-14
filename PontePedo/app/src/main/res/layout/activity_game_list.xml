@@ -9,16 +9,24 @@
         android:layout_height="wrap_content"
         android:name="@string/games_title"
         android:id="@+id/games_title"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:text="@string/games_title"
         android:textColor="@color/black"
         android:gravity="bottom|center" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_list_choice"
+        android:layout_below="@+id/games_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listGames"
-        android:layout_below="@+id/games_title"
+        android:layout_below="@+id/spinner_list_choice"
         android:layout_centerHorizontal="true" />
 
     <ImageButton

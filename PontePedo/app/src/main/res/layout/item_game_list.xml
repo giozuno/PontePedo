@@ -6,9 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game Name"
-        android:textSize="25dp"
-        android:textStyle="italic"
+        android:textSize="20sp"
         android:textColor="@color/black"
         android:id="@+id/item_game_name"
         android:padding="5dp"

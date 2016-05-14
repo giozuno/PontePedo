@@ -97,7 +97,15 @@ public class DataBaseOperations {
         String[] projection = {
                 DataBaseContract.CardGamesContract._ID,
                 DataBaseContract.CardGamesContract.COLUMN_NAME,
-                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_0,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_1,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_2,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_3,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_4,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_5,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_6,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_7,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_8,
                 DataBaseContract.CardGamesContract.COLUMN_IDGAME
         };
         String sortOrder =
@@ -123,8 +131,16 @@ public class DataBaseOperations {
                 if(c.getString(1).equals(cardNum.toString())) {
                     cg.setId(c.getInt(0));
                     cg.setName(c.getString(1));
-                    cg.setDrawable(c.getInt(2));
-                    cg.setIdGame(c.getInt(3));
+                    cg.setDrawable_0(c.getInt(2));
+                    cg.setDrawable_1(c.getInt(3));
+                    cg.setDrawable_2(c.getInt(4));
+                    cg.setDrawable_3(c.getInt(5));
+                    cg.setDrawable_4(c.getInt(6));
+                    cg.setDrawable_5(c.getInt(7));
+                    cg.setDrawable_6(c.getInt(8));
+                    cg.setDrawable_7(c.getInt(9));
+                    cg.setDrawable_8(c.getInt(10));
+                    cg.setIdGame(c.getInt(11));
                 }
             } while (c.moveToNext());
         }

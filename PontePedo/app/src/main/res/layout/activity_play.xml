@@ -16,15 +16,14 @@
         android:gravity="bottom|center" />
 
     <ImageButton
-        android:layout_width="250dp"
-        android:layout_height="380dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/play_card"
-        android:layout_below="@+id/play_name_of_game"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/card_back"
+        android:src="@drawable/card_back0"
         android:background="@color/background"
         android:contentDescription="@string/null_card"
-        android:layout_marginTop="20dp"/>
+        android:layout_below="@+id/play_name_of_game" />
 
     <ImageButton
         android:layout_width="wrap_content"

@@ -22,6 +22,7 @@ public class ActivityRoulette extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roulette);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.hide();
 
         final ImageButton roulette = (ImageButton) findViewById(R.id.roulette);
@@ -79,7 +80,7 @@ public class ActivityRoulette extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void fullRoulette(int sec) {
+    private void fullRoulette(int sec) {
         this.animation.setOneShot(true);
         this.animation.addFrame(getDrawable(R.drawable.ruleta1), sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta2), sec);
@@ -92,48 +93,48 @@ public class ActivityRoulette extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette1(int sec){
+    private void roulette1(int sec){
         this.animation.addFrame(getDrawable(R.drawable.ruleta1), sec);
         challenge = getString(R.string.reto1);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette2(int sec){
+    private void roulette2(int sec){
         roulette1(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta2), sec);
         challenge = getString(R.string.reto2);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette3(int sec){
+    private void roulette3(int sec){
         roulette2(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta3), sec);
         challenge = getString(R.string.reto3);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette4(int sec){
+    private void roulette4(int sec){
         roulette3(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta4), sec);
         challenge = getString(R.string.reto4);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette5(int sec){
+    private void roulette5(int sec){
         roulette4(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta5), sec);
         challenge = getString(R.string.reto5);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette6(int sec){
+    private void roulette6(int sec){
         roulette5(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta6), sec);
         challenge = getString(R.string.reto6);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette7(int sec){
+    private void roulette7(int sec){
         roulette6(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta7), sec);
         challenge = getString(R.string.reto7);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void roulette8(int sec){
+    private void roulette8(int sec){
         roulette7(sec);
         this.animation.addFrame(getDrawable(R.drawable.ruleta8), sec);
         challenge = getString(R.string.reto8);

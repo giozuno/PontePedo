@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:src="@drawable/title"
+        android:src="@drawable/title_logo"
         android:id="@+id/menu_title" />
 
     <ImageView
@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:text="@string/menu_button_play"
         android:id="@+id/menu_button_play"
-        android:layout_above="@+id/menu_button_games" />
+        android:layout_above="@+id/menu_button_games"
+        />
 
     <Button
         android:layout_width="match_parent"
