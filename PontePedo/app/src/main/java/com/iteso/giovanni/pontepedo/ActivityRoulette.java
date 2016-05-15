@@ -82,60 +82,76 @@ public class ActivityRoulette extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void fullRoulette(int sec) {
         this.animation.setOneShot(true);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta1), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta2), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta3), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta4), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta5), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta6), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta7), sec);
+        //noinspection ConstantConditions,ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta8), sec);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette1(int sec){
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta1), sec);
         challenge = getString(R.string.reto1);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette2(int sec){
         roulette1(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta2), sec);
         challenge = getString(R.string.reto2);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette3(int sec){
         roulette2(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta3), sec);
         challenge = getString(R.string.reto3);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette4(int sec){
         roulette3(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta4), sec);
         challenge = getString(R.string.reto4);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette5(int sec){
         roulette4(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta5), sec);
         challenge = getString(R.string.reto5);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette6(int sec){
         roulette5(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta6), sec);
         challenge = getString(R.string.reto6);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette7(int sec){
         roulette6(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta7), sec);
         challenge = getString(R.string.reto7);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void roulette8(int sec){
         roulette7(sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.ruleta8), sec);
         challenge = getString(R.string.reto8);
     }

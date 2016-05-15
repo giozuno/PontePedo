@@ -14,6 +14,7 @@ public class ActivityGameDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_detail);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.hide();
 
         final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());

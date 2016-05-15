@@ -61,7 +61,7 @@ public class ActivityPlay extends AppCompatActivity {
                         titleGame.setText(g.getName());
                     }
                     else {
-                        setBackAnimation(time, cg, true);
+                        setBackAnimation(time, null, true);
                         card.setImageDrawable(animation);
                         animation.start();
                         card.setContentDescription(getString(R.string.desc_card_joker));
@@ -136,7 +136,9 @@ public class ActivityPlay extends AppCompatActivity {
         int drawablesBack[] = cardGame.getBackDrawables();
         // Agregar frames del cardBack
         for(int i=0; i<=8; i++)
+            //noinspection ConstantConditions
             this.animation.addFrame(getDrawable(drawablesBack[i]), sec);
+        //noinspection ConstantConditions
         this.animation.addFrame(getDrawable(R.drawable.card_back9), sec);
         // Agregar frames del cardFront
         if(!isJoker)
@@ -145,6 +147,7 @@ public class ActivityPlay extends AppCompatActivity {
             cardGame = new CardGame(true, true);
         int drawables[] = cardGame.getBackDrawables();
         for(int i = 8; i>=0; i--)
+            //noinspection ConstantConditions,ConstantConditions
             this.animation.addFrame(getDrawable(drawables[i]), sec);
     }
 
@@ -159,7 +162,9 @@ public class ActivityPlay extends AppCompatActivity {
             cardGame = cg;
         int drawables[] = cardGame.getFrontDrawables();
         for(int i=0; i<6; i++)
+            //noinspection ConstantConditions
             animation.addFrame(getDrawable(drawables[i]), sec);
+        //noinspection ConstantConditions
         animation.addFrame(getDrawable(R.drawable.card_back0), sec);
     }
 }

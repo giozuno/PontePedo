@@ -67,7 +67,7 @@ public class ActivityCreateGame extends AppCompatActivity {
                         dbOperations.changeCardGame(gameOld, idNewGame);
                         makeIntentToList(gameOld, -1, editPlayingEnable, false, false, false);
                     }
-                    else if(deleteEnable) {
+                    else{
                         addGame();
                         dbOperations.changeCardGame(gameOld, idNewGame);
                         dbOperations.deleteGame(gameOld);
