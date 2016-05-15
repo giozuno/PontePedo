@@ -111,16 +111,15 @@ public class ActivityPlay extends AppCompatActivity {
     }
 
     private void fillStack() {
-        for(int i=0; i<carta.length; i++){
+        for (String ignored : carta) {
             boolean flag = false;
             Random rnd = new Random();
-            int x = (int)(rnd.nextDouble() * carta.length);
-            while (!flag){
-                if(!stack.contains(carta[x])){
+            int x = (int) (rnd.nextDouble() * carta.length);
+            while (!flag) {
+                if (!stack.contains(carta[x])) {
                     stack.push(carta[x]);
                     flag = true;
-                }
-                else if (x == carta.length-1)
+                } else if (x == carta.length - 1)
                     x = 0;
                 else
                     x++;
