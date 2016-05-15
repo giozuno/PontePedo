@@ -6,9 +6,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/item_gameList_textSize"
         android:textColor="@color/black"
         android:id="@+id/item_game_name"
-        android:padding="5dp"
+        android:padding="@dimen/item_list_padding"
         android:longClickable="true"/>
 </LinearLayout>

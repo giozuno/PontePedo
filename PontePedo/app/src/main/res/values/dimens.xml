@@ -2,4 +2,22 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="title_activity_textSize">35sp</dimen>
+    <dimen name="spinner_textSize">25sp</dimen>
+    <dimen name="item_gameList_textSize">20sp</dimen>
+    <dimen name="play_button_width">130dp</dimen>
+    <dimen name="play_button_height">70dp</dimen>
+    <dimen name="detail_text_marginTop">10dp</dimen>
+    <dimen name="list_spinner_marginBottom">5dp</dimen>
+    <dimen name="list_addButton_margin">10dp</dimen>
+    <dimen name="item_list_padding">5dp</dimen>
+    <dimen name="roulette_image_width">330dp</dimen>
+    <dimen name="roulette_image_height">330dp</dimen>
+    <dimen name="main_title_height">150dp</dimen>
+    <dimen name="main_logo_width">200dp</dimen>
+    <dimen name="main_logo_height">200dp</dimen>
+    <dimen name="main_logo_marginTop">25dp</dimen>
+    <dimen name="main_facebookButton_width">320dp</dimen>
+    <dimen name="main_facebookButton_height">40dp</dimen>
+    <dimen name="main_buttonGames_marginBottom">5dp</dimen>
 </resources>

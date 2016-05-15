@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:name="@string/games_title"
         android:id="@+id/games_title"
-        android:textSize="35sp"
+        android:textSize="@dimen/title_activity_textSize"
         android:text="@string/games_title"
         android:textColor="@color/black"
         android:gravity="bottom|center" />
@@ -20,7 +20,7 @@
         android:id="@+id/spinner_list_choice"
         android:layout_below="@+id/games_title"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="@dimen/list_spinner_marginBottom"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -38,20 +38,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <!--
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_list_game_button"
-        android:src="@drawable/edit"
-        android:background="@color/background"
-        android:layout_above="@+id/listGames"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"/>
-    -->
+        android:layout_marginRight="@dimen/list_addButton_margin"
+        android:layout_marginEnd="@dimen/list_addButton_margin"
+        android:layout_marginBottom="@dimen/list_addButton_margin"/>
 
 </RelativeLayout>

@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:text="@string/title_roulette"
         android:id="@+id/title_roulette"
-        android:textSize="35dp"
+        android:textSize="@dimen/title_activity_textSize"
         android:textColor="@color/black"
         android:gravity="bottom|center" />
 
     <ImageButton
-        android:layout_width="330dp"
-        android:layout_height="330dp"
+        android:layout_width="@dimen/roulette_image_width"
+        android:layout_height="@dimen/roulette_image_height"
         android:id="@+id/roulette"
         android:src="@drawable/ruleta0"
         android:background="@color/background"

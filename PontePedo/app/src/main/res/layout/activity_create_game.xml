@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/change_title"
         android:id="@+id/change_title"
-        android:textSize="35dp"
+        android:textSize="@dimen/title_activity_textSize"
         android:textColor="@color/black"
         android:gravity="bottom|center" />
 

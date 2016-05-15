@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/play_getCard"
         android:id="@+id/play_name_of_game"
-        android:textSize="35dp"
+        android:textSize="@dimen/title_activity_textSize"
         android:textColor="@color/black"
         android:gravity="bottom|center"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -38,9 +38,9 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
     <Button
-        android:layout_width="130dp"
-        android:layout_height="70dp"
-        android:text="Ruleta de Castigos"
+        android:layout_width="@dimen/play_button_width"
+        android:layout_height="@dimen/play_button_height"
+        android:text="@string/play_game_roulette"
         android:id="@+id/buttonRoulette"
         android:layout_above="@+id/play_info"
         android:layout_centerHorizontal="true" />
