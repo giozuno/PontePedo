@@ -106,6 +106,12 @@ public class DataBaseOperations {
                 DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_6,
                 DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_7,
                 DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_8,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F1,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F2,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F3,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F4,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F5,
+                DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F6,
                 DataBaseContract.CardGamesContract.COLUMN_IDGAME
         };
         String sortOrder =
@@ -140,7 +146,13 @@ public class DataBaseOperations {
                     cg.setDrawable_6(c.getInt(8));
                     cg.setDrawable_7(c.getInt(9));
                     cg.setDrawable_8(c.getInt(10));
-                    cg.setIdGame(c.getInt(11));
+                    cg.setDrawable_f1(c.getInt(11));
+                    cg.setDrawable_f2(c.getInt(12));
+                    cg.setDrawable_f3(c.getInt(13));
+                    cg.setDrawable_f4(c.getInt(14));
+                    cg.setDrawable_f5(c.getInt(15));
+                    cg.setDrawable_f6(c.getInt(16));
+                    cg.setIdGame(c.getInt(17));
                 }
             } while (c.moveToNext());
         }

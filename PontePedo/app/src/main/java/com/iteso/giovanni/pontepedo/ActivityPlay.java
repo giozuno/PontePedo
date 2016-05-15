@@ -41,6 +41,8 @@ public class ActivityPlay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 button.setVisibility(View.INVISIBLE);
+                int time = 25;
+                CardGame cg = null;
                 if (card.getContentDescription() == getString(R.string.null_card)) {
                     if (stack.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Nuevas Cartas!", Toast.LENGTH_SHORT).show();
@@ -48,21 +50,18 @@ public class ActivityPlay extends AppCompatActivity {
                     }
                     act = stack.peek();
                     stack.pop();
-                    int time = 25;
 
                     if(!act.equals("Joker") && !act.equals("Joker2")) {
-                        CardGame cg = dbOperations.getCardNumOfGame(act);
+                        cg = dbOperations.getCardNumOfGame(act);
                         g = dbOperations.getGame(cg.getIdGame());
-//                        card.setImageDrawable(getDrawable(cg.getDrawable()));
-                        cardAnimation(time, cg, false);
+                        setBackAnimation(time, cg, false);
                         card.setImageDrawable(animation);
                         animation.start();
                         card.setContentDescription(act);
                         titleGame.setText(g.getName());
                     }
                     else {
-//                        card.setImageDrawable(getDrawable(R.drawable.card_joker));
-                        cardAnimation(time, null, true);
+                        setBackAnimation(time, cg, true);
                         card.setImageDrawable(animation);
                         animation.start();
                         card.setContentDescription("carta Joker");
@@ -71,7 +70,15 @@ public class ActivityPlay extends AppCompatActivity {
                     }
 
                 } else {
-                    card.setImageDrawable(getDrawable(R.drawable.card_back0));
+//                    card.setImageDrawable(getDrawable(R.drawable.card_back0));
+                    boolean isJoker = false;
+                    if(act.equals("Joker") || act.equals("Joker2"))
+                        isJoker = true;
+                    else
+                        cg = dbOperations.getCardNumOfGame(act);
+                    setFrontAnimation(time, cg, isJoker);
+                    card.setImageDrawable(animation);
+                    animation.start();
                     card.setContentDescription(getString(R.string.null_card));
                     titleGame.setText(R.string.play_getCard);
                 }
@@ -122,22 +129,37 @@ public class ActivityPlay extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void cardAnimation(int sec, CardGame cg, boolean isJoker) {
+    private void setBackAnimation(int sec, CardGame cg, boolean isJoker) {
         this.animation = new AnimationDrawable();
         this.animation.setOneShot(true);
         CardGame cardGame = new CardGame(false, true);
-        int drawablesBack[] = cardGame.getDrawables();
-        // Agregar frames de cardBack
+        int drawablesBack[] = cardGame.getBackDrawables();
+        // Agregar frames del cardBack
         for(int i=0; i<=8; i++)
             this.animation.addFrame(getDrawable(drawablesBack[i]), sec);
         this.animation.addFrame(getDrawable(R.drawable.card_back9), sec);
-        // Agregar frames de cardFront
+        // Agregar frames del cardFront
         if(!isJoker)
             cardGame = cg;
         else
-            cardGame = new CardGame(true, false);
-        int drawables[] = cardGame.getDrawables();
+            cardGame = new CardGame(true, true);
+        int drawables[] = cardGame.getBackDrawables();
         for(int i = 8; i>=0; i--)
             this.animation.addFrame(getDrawable(drawables[i]), sec);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setFrontAnimation(int sec, CardGame cg, boolean isJoker) {
+        this.animation = new AnimationDrawable();
+        this.animation.setOneShot(true);
+        CardGame cardGame = new CardGame();
+        if(isJoker)
+            cardGame = new CardGame(true, false);
+        else
+            cardGame = cg;
+        int drawables[] = cardGame.getFrontDrawables();
+        for(int i=0; i<6; i++)
+            animation.addFrame(getDrawable(drawables[i]), sec);
+        animation.addFrame(getDrawable(R.drawable.card_back0), sec);
     }
 }

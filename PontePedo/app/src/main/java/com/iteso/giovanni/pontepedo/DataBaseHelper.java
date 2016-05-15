@@ -32,6 +32,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_6 + " INTEGER," +
                     DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_7 + " INTEGER," +
                     DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_8 + " INTEGER," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F1 + " INTEGER," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F2 + " INTEGER," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F3 + " INTEGER," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F4 + " INTEGER," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F5 + " INTEGER," +
+                    DataBaseContract.CardGamesContract.COLUMN_DRAWABLE_F6 + " INTEGER," +
                     DataBaseContract.CardGamesContract.COLUMN_IDGAME + " INTEGER NOT NULL," +
                     "FOREIGN KEY("+ DataBaseContract.CardGamesContract.COLUMN_IDGAME +") REFERENCES " +
                     DataBaseContract.CardGamesContract.TABLE_NAME + "("+ DataBaseContract.GamesContract._ID+"))";
@@ -59,32 +65,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "(null,\"Balazos\",\"El ultimo jugador en tirarse al suelo y gritar BALAZOS!!! BALAZOS!!! perdera el juego\",\"0\")";
 
     public static final String DEFAULT_INSERT_CARD_GAMES = "insert into CARD_GAMES values" +
-            "(null,\"AsR\"," + R.drawable.card_a_0 + "," + R.drawable.card_a_1 + "," + R.drawable.card_a_2 + "," + R.drawable.card_a_3 + ","
-            + R.drawable.card_a_4 +","+ R.drawable.card_a_5 +","+ R.drawable.card_a_6 +","+ R.drawable.card_a_7 +","+ R.drawable.card_a_8 +",\"1\")," +
-            "(null,\"2R\"," + R.drawable.card_2_0 + "," + R.drawable.card_2_1 + "," + R.drawable.card_2_2 + "," + R.drawable.card_2_3 + ","
-            + R.drawable.card_2_4 +","+ R.drawable.card_2_5 +","+ R.drawable.card_2_6 +","+ R.drawable.card_2_7 +","+ R.drawable.card_2_8 + ",\"2\")," +
-            "(null,\"3R\"," + R.drawable.card_3_0 + "," + R.drawable.card_3_1 + "," + R.drawable.card_3_2 + "," + R.drawable.card_3_3 + ","
-            + R.drawable.card_3_4 +","+ R.drawable.card_3_5 +","+ R.drawable.card_3_6 +","+ R.drawable.card_3_7 +","+ R.drawable.card_3_8 + ",\"3\")," +
-            "(null,\"4R\"," + R.drawable.card_4_0 + "," + R.drawable.card_4_1 + "," + R.drawable.card_4_2 + "," + R.drawable.card_4_3 + ","
-            + R.drawable.card_4_4 +","+ R.drawable.card_4_5 +","+ R.drawable.card_4_6 +","+ R.drawable.card_4_7 +","+ R.drawable.card_4_8 + ",\"4\")," +
-            "(null,\"5R\"," + R.drawable.card_5_0 + "," + R.drawable.card_5_1 + "," + R.drawable.card_5_2 + "," + R.drawable.card_5_3 + ","
-            + R.drawable.card_5_4 +","+ R.drawable.card_5_5 +","+ R.drawable.card_5_6 +","+ R.drawable.card_5_7 +","+ R.drawable.card_5_8 + ",\"5\")," +
-            "(null,\"6R\"," + R.drawable.card_6_0 + "," + R.drawable.card_6_1 + "," + R.drawable.card_6_2 + "," + R.drawable.card_6_3 + ","
-            + R.drawable.card_6_4 +","+ R.drawable.card_6_5 +","+ R.drawable.card_6_6 +","+ R.drawable.card_6_7 +","+ R.drawable.card_6_8 + ",\"6\")," +
-            "(null,\"7R\"," + R.drawable.card_7_0 + "," + R.drawable.card_7_1 + "," + R.drawable.card_7_2 + "," + R.drawable.card_7_3 + ","
-            + R.drawable.card_7_4 +","+ R.drawable.card_7_5 +","+ R.drawable.card_7_6 +","+ R.drawable.card_7_7 +","+ R.drawable.card_7_8 + ",\"7\")," +
-            "(null,\"8R\"," + R.drawable.card_8_0 + "," + R.drawable.card_8_1 + "," + R.drawable.card_8_2 + "," + R.drawable.card_8_3 + ","
-            + R.drawable.card_8_4 +","+ R.drawable.card_8_5 +","+ R.drawable.card_8_6 +","+ R.drawable.card_8_7 +","+ R.drawable.card_8_8 + ",\"8\")," +
-            "(null,\"9R\"," + R.drawable.card_9_0 + "," + R.drawable.card_9_1 + "," + R.drawable.card_9_2 + "," + R.drawable.card_9_3 + ","
-            + R.drawable.card_9_4 +","+ R.drawable.card_9_5 +","+ R.drawable.card_9_6 +","+ R.drawable.card_9_7 +","+ R.drawable.card_9_8 + ",\"9\")," +
-            "(null,\"10R\"," + R.drawable.card_10_0 + "," + R.drawable.card_10_1 + "," + R.drawable.card_10_2 + "," + R.drawable.card_10_3 + ","
-            + R.drawable.card_10_4 +","+ R.drawable.card_10_5 +","+ R.drawable.card_10_6 +","+ R.drawable.card_10_7 +","+ R.drawable.card_10_8 + ",\"10\")," +
-            "(null,\"JR\"," + R.drawable.card_j_0 + "," + R.drawable.card_j_1 + "," + R.drawable.card_j_2 + "," + R.drawable.card_j_3 + ","
-            + R.drawable.card_j_4 +","+ R.drawable.card_j_5 +","+ R.drawable.card_j_6 +","+ R.drawable.card_j_7 +","+ R.drawable.card_j_8 + ",\"11\")," +
-            "(null,\"QR\"," + R.drawable.card_q_0 + "," + R.drawable.card_q_1 + "," + R.drawable.card_q_2 + "," + R.drawable.card_q_3 + ","
-            + R.drawable.card_q_4 +","+ R.drawable.card_q_5 +","+ R.drawable.card_q_6 +","+ R.drawable.card_q_7 +","+ R.drawable.card_q_8 + ",\"12\")," +
-            "(null,\"KR\"," + R.drawable.card_k_0 + "," + R.drawable.card_k_1 + "," + R.drawable.card_k_2 + "," + R.drawable.card_k_3 + ","
-            + R.drawable.card_k_4 +","+ R.drawable.card_k_5 +","+ R.drawable.card_k_6 +","+ R.drawable.card_k_7 +","+ R.drawable.card_k_8 + ",\"13\")";
+            "(null,\"AsR\"," + R.drawable.card_a_0 + "," + R.drawable.card_a_1 + "," + R.drawable.card_a_2 + "," + R.drawable.card_a_3 + "," + R.drawable.card_a_4 +","+
+            R.drawable.card_a_5 +","+ R.drawable.card_a_6 +","+ R.drawable.card_a_7 +","+ R.drawable.card_a_8 + "," + R.drawable.card_a_f1 + "," + R.drawable.card_a_f2 + "," +
+            R.drawable.card_a_f3 + "," + R.drawable.card_a_f4 +","+ R.drawable.card_a_f5 +","+ R.drawable.card_a_f6 +",\"1\")," +
+            "(null,\"2R\"," + R.drawable.card_2_0 + "," + R.drawable.card_2_1 + "," + R.drawable.card_2_2 + "," + R.drawable.card_2_3 + "," + R.drawable.card_2_4 +","+
+            R.drawable.card_2_5 +","+ R.drawable.card_2_6 +","+ R.drawable.card_2_7 +","+ R.drawable.card_2_8  + "," + R.drawable.card_2_f1 + "," + R.drawable.card_2_f2 + "," +
+            R.drawable.card_2_f3 + "," + R.drawable.card_2_f4 +","+ R.drawable.card_2_f5 +","+ R.drawable.card_2_f6 + ",\"2\")," +
+            "(null,\"3R\"," + R.drawable.card_3_0 + "," + R.drawable.card_3_1 + "," + R.drawable.card_3_2 + "," + R.drawable.card_3_3 + "," + R.drawable.card_3_4 +","+
+            R.drawable.card_3_5 +","+ R.drawable.card_3_6 +","+ R.drawable.card_3_7 +","+ R.drawable.card_3_8 + "," + R.drawable.card_3_f1 + "," + R.drawable.card_3_f2 + "," +
+            R.drawable.card_3_f3 + "," + R.drawable.card_3_f4 +","+ R.drawable.card_3_f5 +","+ R.drawable.card_3_f6 + ",\"3\")," +
+            "(null,\"4R\"," + R.drawable.card_4_0 + "," + R.drawable.card_4_1 + "," + R.drawable.card_4_2 + "," + R.drawable.card_4_3 + "," + R.drawable.card_4_4 +","+
+            R.drawable.card_4_5 +","+ R.drawable.card_4_6 +","+ R.drawable.card_4_7 +","+ R.drawable.card_4_8 + "," + R.drawable.card_4_f1 + "," + R.drawable.card_4_f2 + "," +
+            R.drawable.card_4_f3 + "," + R.drawable.card_4_f4 +","+ R.drawable.card_4_f5 +","+ R.drawable.card_4_f6 + ",\"4\")," +
+            "(null,\"5R\"," + R.drawable.card_5_0 + "," + R.drawable.card_5_1 + "," + R.drawable.card_5_2 + "," + R.drawable.card_5_3 + "," + R.drawable.card_5_4 +","+
+            R.drawable.card_5_5 +","+ R.drawable.card_5_6 +","+ R.drawable.card_5_7 +","+ R.drawable.card_5_8  + "," + R.drawable.card_5_f1 + "," + R.drawable.card_5_f2 + "," +
+            R.drawable.card_5_f3 + "," + R.drawable.card_5_f4 +","+ R.drawable.card_5_f5 +","+ R.drawable.card_5_f6 + ",\"5\")," +
+            "(null,\"6R\"," + R.drawable.card_6_0 + "," + R.drawable.card_6_1 + "," + R.drawable.card_6_2 + "," + R.drawable.card_6_3 + "," + R.drawable.card_6_4 +","+
+            R.drawable.card_6_5 +","+ R.drawable.card_6_6 +","+ R.drawable.card_6_7 +","+ R.drawable.card_6_8 + "," + R.drawable.card_6_f1 + "," + R.drawable.card_6_f2 + "," +
+            R.drawable.card_6_f3 + "," + R.drawable.card_6_f4 +","+ R.drawable.card_6_f5 +","+ R.drawable.card_6_f6 + ",\"6\")," +
+            "(null,\"7R\"," + R.drawable.card_7_0 + "," + R.drawable.card_7_1 + "," + R.drawable.card_7_2 + "," + R.drawable.card_7_3 + "," + R.drawable.card_7_4 +","+
+            R.drawable.card_7_5 +","+ R.drawable.card_7_6 +","+ R.drawable.card_7_7 +","+ R.drawable.card_7_8 + "," + R.drawable.card_7_f1 + "," + R.drawable.card_7_f2 + "," +
+            R.drawable.card_7_f3 + "," + R.drawable.card_7_f4 +","+ R.drawable.card_7_f5 +","+ R.drawable.card_7_f6 + ",\"7\")," +
+            "(null,\"8R\"," + R.drawable.card_8_0 + "," + R.drawable.card_8_1 + "," + R.drawable.card_8_2 + "," + R.drawable.card_8_3 + "," + R.drawable.card_8_4 +","+
+            R.drawable.card_8_5 +","+ R.drawable.card_8_6 +","+ R.drawable.card_8_7 +","+ R.drawable.card_8_8 + "," + R.drawable.card_8_f1 + "," + R.drawable.card_8_f2 + "," +
+            R.drawable.card_8_f3 + "," + R.drawable.card_8_f4 +","+ R.drawable.card_8_f5 +","+ R.drawable.card_8_f6 + ",\"8\")," +
+            "(null,\"9R\"," + R.drawable.card_9_0 + "," + R.drawable.card_9_1 + "," + R.drawable.card_9_2 + "," + R.drawable.card_9_3 + "," + R.drawable.card_9_4 +","+
+            R.drawable.card_9_5 +","+ R.drawable.card_9_6 +","+ R.drawable.card_9_7 +","+ R.drawable.card_9_8 + "," + R.drawable.card_9_f1 + "," + R.drawable.card_9_f2 + "," +
+            R.drawable.card_9_f3 + "," + R.drawable.card_9_f4 +","+ R.drawable.card_9_f5 +","+ R.drawable.card_9_f6 + ",\"9\")," +
+            "(null,\"10R\"," + R.drawable.card_10_0 + "," + R.drawable.card_10_1 + "," + R.drawable.card_10_2 + "," + R.drawable.card_10_3 + "," + R.drawable.card_10_4 +","+
+            R.drawable.card_10_5 +","+ R.drawable.card_10_6 +","+ R.drawable.card_10_7 +","+ R.drawable.card_10_8 + "," + R.drawable.card_10_f1 + "," + R.drawable.card_10_f2 + "," +
+            R.drawable.card_10_f3 + "," + R.drawable.card_10_f4 +","+ R.drawable.card_10_f5 +","+ R.drawable.card_10_f6 + ",\"10\")," +
+            "(null,\"JR\"," + R.drawable.card_j_0 + "," + R.drawable.card_j_1 + "," + R.drawable.card_j_2 + "," + R.drawable.card_j_3 + "," + R.drawable.card_j_4 +","+
+            R.drawable.card_j_5 +","+ R.drawable.card_j_6 +","+ R.drawable.card_j_7 +","+ R.drawable.card_j_8 + "," + R.drawable.card_j_f1 + "," + R.drawable.card_j_f2 + "," +
+            R.drawable.card_j_f3 + "," + R.drawable.card_j_f4 +","+ R.drawable.card_j_f5 +","+ R.drawable.card_j_f6 + ",\"11\")," +
+            "(null,\"QR\"," + R.drawable.card_q_0 + "," + R.drawable.card_q_1 + "," + R.drawable.card_q_2 + "," + R.drawable.card_q_3 + "," + R.drawable.card_q_4 +","+
+            R.drawable.card_q_5 +","+ R.drawable.card_q_6 +","+ R.drawable.card_q_7 +","+ R.drawable.card_q_8 + "," + R.drawable.card_q_f1 + "," + R.drawable.card_q_f2 + "," +
+            R.drawable.card_q_f3 + "," + R.drawable.card_q_f4 +","+ R.drawable.card_q_f5 +","+ R.drawable.card_q_f6 + ",\"12\")," +
+            "(null,\"KR\"," + R.drawable.card_k_0 + "," + R.drawable.card_k_1 + "," + R.drawable.card_k_2 + "," + R.drawable.card_k_3 + "," + R.drawable.card_k_4 +","+
+            R.drawable.card_k_5 +","+ R.drawable.card_k_6 +","+ R.drawable.card_k_7 +","+ R.drawable.card_k_8 + "," + R.drawable.card_k_f1 + "," + R.drawable.card_k_f2 + "," +
+            R.drawable.card_k_f3 + "," + R.drawable.card_k_f4 +","+ R.drawable.card_k_f5 +","+ R.drawable.card_k_f6 + ",\"13\")";
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

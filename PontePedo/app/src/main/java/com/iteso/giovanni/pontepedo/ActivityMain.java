@@ -18,7 +18,6 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        final DataBaseOperations dbOperations = new DataBaseOperations(getApplicationContext());
 
         final Button play = (Button) findViewById(R.id.menu_button_play);
         final Button games = (Button) findViewById(R.id.menu_button_games);

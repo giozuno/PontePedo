@@ -28,6 +28,12 @@ public class DataBaseContract {
         public static final String COLUMN_DRAWABLE_6 = "drawable_6";
         public static final String COLUMN_DRAWABLE_7 = "drawable_7";
         public static final String COLUMN_DRAWABLE_8 = "drawable_8";
+        public static final String COLUMN_DRAWABLE_F1 = "drawable_f1";
+        public static final String COLUMN_DRAWABLE_F2 = "drawable_f2";
+        public static final String COLUMN_DRAWABLE_F3 = "drawable_f3";
+        public static final String COLUMN_DRAWABLE_F4 = "drawable_f4";
+        public static final String COLUMN_DRAWABLE_F5 = "drawable_f5";
+        public static final String COLUMN_DRAWABLE_F6 = "drawable_f6";
         public static final String COLUMN_IDGAME = "idGame";
     }
 }
