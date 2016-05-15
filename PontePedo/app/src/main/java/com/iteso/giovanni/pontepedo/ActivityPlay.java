@@ -45,13 +45,13 @@ public class ActivityPlay extends AppCompatActivity {
                 CardGame cg = null;
                 if (card.getContentDescription() == getString(R.string.null_card)) {
                     if (stack.isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "Nuevas Cartas!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.play_toast_newCards_message, Toast.LENGTH_SHORT).show();
                         fillStack();
                     }
                     act = stack.peek();
                     stack.pop();
 
-                    if(!act.equals("Joker") && !act.equals("Joker2")) {
+                    if(!act.equals(getString(R.string.card_Joker)) && !act.equals(getString(R.string.card_Joker2))) {
                         cg = dbOperations.getCardNumOfGame(act);
                         g = dbOperations.getGame(cg.getIdGame());
                         setBackAnimation(time, cg, false);
@@ -64,15 +64,15 @@ public class ActivityPlay extends AppCompatActivity {
                         setBackAnimation(time, cg, true);
                         card.setImageDrawable(animation);
                         animation.start();
-                        card.setContentDescription("carta Joker");
-                        titleGame.setText(R.string.game_JK);
+                        card.setContentDescription(getString(R.string.desc_card_joker));
+                        titleGame.setText(R.string.play_game_roulette);
                         button.setVisibility(View.VISIBLE);
                     }
 
                 } else {
 //                    card.setImageDrawable(getDrawable(R.drawable.card_back0));
                     boolean isJoker = false;
-                    if(act.equals("Joker") || act.equals("Joker2"))
+                    if(act.equals(getString(R.string.card_Joker)) || act.equals(getString(R.string.card_Joker2)))
                         isJoker = true;
                     else
                         cg = dbOperations.getCardNumOfGame(act);
@@ -88,16 +88,16 @@ public class ActivityPlay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (card.getContentDescription() == getString(R.string.null_card))
-                    Toast.makeText(getApplicationContext(), "Toca la carta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.play_toast_touchCard, Toast.LENGTH_SHORT).show();
                 else {
                     Intent intent = new Intent(ActivityPlay.this, ActivityGameDetail.class);
-                    if(!act.equals("Joker") && !act.equals("Joker2")) {
-                        intent.putExtra("pos", g.getId());
-                        intent.putExtra("onlyInfo", true);
+                    if(!act.equals(getString(R.string.card_Joker)) && !act.equals(getString(R.string.card_Joker2))) {
+                        intent.putExtra(getString(R.string.intent_pos), g.getId());
+                        intent.putExtra(getString(R.string.intent_onlyInfo), true);
                         startActivity(intent);
                     }
                     else
-                        Toast.makeText(getApplicationContext(), "Presiona el boton para ir a la ruleta", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.play_toast_goToRoulette, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -152,7 +152,7 @@ public class ActivityPlay extends AppCompatActivity {
     private void setFrontAnimation(int sec, CardGame cg, boolean isJoker) {
         this.animation = new AnimationDrawable();
         this.animation.setOneShot(true);
-        CardGame cardGame = new CardGame();
+        CardGame cardGame;
         if(isJoker)
             cardGame = new CardGame(true, false);
         else

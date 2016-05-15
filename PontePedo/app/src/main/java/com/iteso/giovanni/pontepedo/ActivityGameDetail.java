@@ -37,7 +37,7 @@ public class ActivityGameDetail extends AppCompatActivity {
         else if(onlyInfo) // Si se consulta cuando el usuario esta jugando
             edit.setVisibility(View.INVISIBLE);
         else if(!playingEnable)
-            edit.setText("Añadir Juego");
+            edit.setText(R.string.gameDetail_buttonText_AñadirJuego);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

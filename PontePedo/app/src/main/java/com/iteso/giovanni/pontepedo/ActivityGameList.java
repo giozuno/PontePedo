@@ -125,7 +125,7 @@ public class ActivityGameList extends AppCompatActivity {
                         else if (options.getItem(which).equals(getString(R.string.options_dialog_deleteGame))) {
                             if (!isGamePlaying) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ActivityGameList.this);
-                                builder.setMessage("¿Estas seguro que deseas eliminar este juego?").
+                                builder.setMessage(R.string.gameList_dialog_deleteGame).
                                         setPositiveButton(R.string.dialog_yes_button, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {

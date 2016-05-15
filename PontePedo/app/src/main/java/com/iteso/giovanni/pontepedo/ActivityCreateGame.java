@@ -44,7 +44,7 @@ public class ActivityCreateGame extends AppCompatActivity {
                 if(!newTitle.getText().toString().isEmpty() && !newDescription.getText().toString().isEmpty()) {
                     if(!changeEnable && !deleteEnable) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityCreateGame.this);
-                        builder.setMessage("¿Deseas agregar este juego a tu lista de juegos actuales?").
+                        builder.setMessage(R.string.create_dialog_add_actGame).
                                 setPositiveButton(R.string.dialog_yes_button, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {

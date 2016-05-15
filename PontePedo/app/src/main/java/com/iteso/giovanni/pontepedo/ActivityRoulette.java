@@ -139,16 +139,4 @@ public class ActivityRoulette extends AppCompatActivity {
         this.animation.addFrame(getDrawable(R.drawable.ruleta8), sec);
         challenge = getString(R.string.reto8);
     }
-
-//    public void challengeChoice(int time1, int time2, int timeFinal, int posFinal) {
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                tileRoulette.setName(challenge);
-//                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.ding_ganador);
-//                mp.start();
-//            }
-//        }, time1*8 + time2*8 + timeFinal*posFinal);
-//    }
 }
